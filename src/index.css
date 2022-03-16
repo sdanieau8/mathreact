@@ -6,8 +6,124 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+* {
+  font-family: "Verdana", cursive, sans-serif;
+  color: #ffffff;
+}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  padding: 20px;
+  background-color: #7cc6fe;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.app {
+  background-color: #252d4a;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 10px 20px 42px 5px rgba(0, 0, 0, 0.5);
+}
+
+.start-page {
+  margin-top: 15%;
+  margin-bottom: 5%;
+  font-size: 26px;
+  text-align: center;
+}
+
+.start-text {
+  animation: color-change 4s infinite;
+  text-align: center;
+  display: block;
+}
+
+.instructions {
+  font-size: 18px;
+  text-align: center;
+  font-style: italic;
+}
+
+.score-section {
+  margin-top: 15%;
+  margin-bottom: 5%;
+  font-size: 22px;
+  text-align: center;
+}
+
+.score-text {
+  animation: color-change 4s infinite;
+}
+@keyframes color-change {
+    0% { color: rgb(250, 243, 54); }
+    50% { color: rgba(0, 16, 247, 0.879); }
+    100% { color: rgb(250, 243, 54); }
+  }
+
+/* QUESTION/TIMER/LEFT SECTION */
+.question-section {
+  width: 100%;
+  position: relative;
+}
+
+.question-text {
+  margin-top: 15%;
+  margin-bottom: 5%;
+  font-size: 22px;
+  text-align: center;
+}
+
+.timer-text {
+  background: rgb(230, 153, 12);
+  padding: 15px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 5px solid rgb(255, 189, 67);
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* ANSWERS/RIGHT SECTION */
+.answer-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  
+}
+
+button {
+  width: 100%;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #252d4a;
+  border-radius: 15px;
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+  border: 5px solid #234668;
+  cursor: pointer;
+  margin-top: 20%;
+}
+
+.correct {
+  background-color: #2f922f;
+}
+
+.incorrect {
+  background-color: #ff3333;
+}
+
+button:hover {
+  background-color: #555e7d;
+}
+
+button:focus {
+  outline: none;
+}
+
+button svg {
+  margin-right: 5px;
 }
