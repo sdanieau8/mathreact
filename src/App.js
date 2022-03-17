@@ -123,8 +123,8 @@ export default class App extends React.Component {
               </div>
             </div>
             <div className='answer-section'>
-              <button onClick={() => this.handleAnswerOptionClick(this.state.equationsArray[this.state.currentQuestion].evaluated === false)}>Faux</button>
-              <button onClick={() => this.handleAnswerOptionClick(this.state.equationsArray[this.state.currentQuestion].evaluated === true)}>Vrai</button>
+              <button className={`${"correct"}`} onClick={() => this.handleAnswerOptionClick(this.state.equationsArray[this.state.currentQuestion].evaluated === false)}>Faux</button>
+              <button className='true' onClick={() => this.handleAnswerOptionClick(this.state.equationsArray[this.state.currentQuestion].evaluated === true)}>Vrai</button>
             </div>
           </div>
         : ''}      

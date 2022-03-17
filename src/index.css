@@ -116,8 +116,9 @@ button {
   background-color: #ff3333;
 }
 
-button:hover {
-  background-color: #555e7d;
+button:active {
+  transform: translate(0, 0.3rem);
+  box-shadow: 0 0.1rem rgba(#234668, 0.65);
 }
 
 button:focus {
