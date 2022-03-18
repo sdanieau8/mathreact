@@ -8,10 +8,12 @@ export default class App extends React.Component {
       score: 0,
       showScore: false,
       startPage: true,
+      seconds: 0,
       equationsArray: this.questions()
       
     }
     this.playAgain = this.playAgain.bind(this);
+    this.intervalId = 0;
   }
   
   // Get Random Number up to a Max Number
@@ -74,12 +76,12 @@ export default class App extends React.Component {
     if (evaluated === true) {
       this.state.score += 1;
     }
-
     const nextQuestion = this.state.currentQuestion + 1;
     if (nextQuestion < this.state.equationsArray.length) {
       this.setState({currentQuestion: nextQuestion});
     } else {
       this.setState({showScore: true});
+      this.stopTimer();
     }
   };
 
@@ -89,14 +91,27 @@ export default class App extends React.Component {
       showScore: false,
       currentQuestion: 0,
       score: 0,
-      equationsArray: this.questions()
+      equationsArray: this.questions(),
+      seconds: 0,
     });
-    
+    this.startTimer();
   }
 
   // Changing Start Page Value
   setStartPage = (value) =>  {
     this.setState({startPage: value})
+  }
+
+
+  // Timer
+  startTimer() {
+    this.intervalId = setInterval(() => {
+      this.setState({seconds: this.state.seconds + 1})
+    }, 1000) 
+  }
+
+  stopTimer() {
+    clearInterval(this.intervalId);
   }
 
 
@@ -109,7 +124,11 @@ export default class App extends React.Component {
         <div className='start-page'>
           <span className='start-text'>Multiplication Game</span>
           <span className='instructions'>Evaluate the equation: Faux(False) Vrai(True)</span>
-          <button onClick={() => this.setStartPage(false)}>Start Game</button>
+          <button onClick={() => 
+            {
+              this.setStartPage(false);
+              this.startTimer();
+            }}>Start Game</button>
         </div>
         }
   
@@ -123,8 +142,8 @@ export default class App extends React.Component {
               </div>
             </div>
             <div className='answer-section'>
-              <button className={`${"correct"}`} onClick={() => this.handleAnswerOptionClick(this.state.equationsArray[this.state.currentQuestion].evaluated === false)}>Faux</button>
-              <button className='true' onClick={() => this.handleAnswerOptionClick(this.state.equationsArray[this.state.currentQuestion].evaluated === true)}>Vrai</button>
+              <button onClick={() => this.handleAnswerOptionClick(this.state.equationsArray[this.state.currentQuestion].evaluated === false)}>Faux</button>
+              <button onClick={() => this.handleAnswerOptionClick(this.state.equationsArray[this.state.currentQuestion].evaluated === true)}>Vrai</button>
             </div>
           </div>
         : ''}      
@@ -133,6 +152,7 @@ export default class App extends React.Component {
         {!this.state.startPage && this.state.showScore ? 
           <div className='score-section'>
            <span className='score-text'>You scored {this.state.score} out of {this.state.equationsArray.length}</span>
+           <span className='time'>Time: {this.state.seconds.toFixed(1)}'s</span>
            <button onClick={this.playAgain}>Jouer Encore (Play Again)</button>
          </div>
         : ''}

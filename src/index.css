@@ -13,10 +13,27 @@ body {
 
 body {
   padding: 20px;
-  background-color: #7cc6fe;
+  /* background-color: #7cc6fe; */
   margin-top: 10%;
   margin-bottom: 10%;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
 }
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 
 .app {
   background-color: #252d4a;
@@ -35,15 +52,17 @@ body {
 }
 
 .start-text {
-  animation: color-change 4s infinite;
+  color: whitesmoke;
   text-align: center;
   display: block;
+  text-shadow: 2px 2px black;
 }
 
 .instructions {
   font-size: 18px;
   text-align: center;
   font-style: italic;
+  color: whitesmoke;
 }
 
 .score-section {
@@ -54,13 +73,11 @@ body {
 }
 
 .score-text {
-  animation: color-change 4s infinite;
+  color: whitesmoke;
+  display: block;
+  margin-bottom: 10%;
+  text-shadow: 2px 2px black;
 }
-@keyframes color-change {
-    0% { color: rgb(250, 243, 54); }
-    50% { color: rgba(0, 16, 247, 0.879); }
-    100% { color: rgb(250, 243, 54); }
-  }
 
 /* QUESTION/TIMER/LEFT SECTION */
 .question-section {
@@ -75,14 +92,12 @@ body {
   text-align: center;
 }
 
-.timer-text {
-  background: rgb(230, 153, 12);
-  padding: 15px;
-  margin-top: 20px;
-  margin-right: 20px;
-  border: 5px solid rgb(255, 189, 67);
-  border-radius: 15px;
+.time {
+  font-size: 18px;
   text-align: center;
+  font-style: italic;
+  display: block;
+  color: rgb(182, 182, 182);
 }
 
 /* ANSWERS/RIGHT SECTION */
@@ -108,18 +123,11 @@ button {
   margin-top: 20%;
 }
 
-.correct {
-  background-color: #2f922f;
-}
-
-.incorrect {
-  background-color: #ff3333;
-}
-
 button:active {
   transform: translate(0, 0.3rem);
   box-shadow: 0 0.1rem rgba(#234668, 0.65);
 }
+
 
 button:focus {
   outline: none;
