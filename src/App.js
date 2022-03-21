@@ -74,7 +74,7 @@ export default class App extends React.Component {
 
   handleAnswerOptionClick = (evaluated) => {
     if (evaluated === true) {
-      this.state.score += 1;
+      this.setState({score: this.state.score + 1});
     }
     const nextQuestion = this.state.currentQuestion + 1;
     if (nextQuestion < this.state.equationsArray.length) {
